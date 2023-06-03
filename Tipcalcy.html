@@ -1,0 +1,176 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip calcy</title>
+    <style>
+        body{
+          background:  linear-gradient(45deg, #ac3053, #d54188,#41c0d5);
+        
+
+        }
+        .container{
+            margin-top: 100px;
+            margin-left: 300px;
+            border: solid black 2px;
+            border-radius: 10px;
+            width: 250px;
+            height: 455px;
+            background-color: rgb(219, 147, 171);
+           box-shadow: 10px 10px 10px black ;
+            
+        }
+        h2{
+            margin-left: 75px;
+        }
+        h4{
+            margin-left: 70px;
+            font-size: medium;
+             font-weight:normal;
+            /* display: inline-block; */
+
+        }
+        .rangee{
+            margin-left: 60px;
+
+        }
+        .innercontainer{
+            display: flex;
+            margin-top: -20px;
+        }
+        .in{
+            margin-left: 90px;
+        }
+        .spa{
+            margin-left: 110px;
+            font-size: large;
+        font-weight: bolder;
+        }
+        #tipamount{
+            margin-top: -20px;
+            font-size: large;
+        font-weight: bolder;
+        }
+        .choose{
+            display: inline-block;
+
+            
+        }
+       #tipamount{
+        margin-left: 40px;
+       }
+       .split{
+        display: inline-block;
+        
+       }
+       #splitperson{
+        margin-left: 70px;
+        /* background-color: blue; */
+        font-size: large;
+        font-weight: bolder;
+       }
+       #finalbill{
+        margin-left: 40px;
+        font-size: large;
+        font-weight: bolder;
+        
+       }
+       #finaltip{
+        margin-left: 50px;
+        font-size: large;
+        font-weight: bolder;
+       }
+       #total{
+        
+        font-size: large;
+        font-weight: bolder;
+       }
+       .sub{
+           background-color:rgb(237, 165, 177);
+           margin-left: 20px;
+           width: 210px;
+           border-radius: 20px;
+           
+           
+       }
+       .totalperperson{
+        margin-left: 50px;
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 >Tip calcy</h2>
+        <h4>Enter Bill Total</h4>
+        <span style="margin-left: 67px; font-size: large;font-weight: bolder;">₹</span><input id="bill" style="width: 100px;" type="text" onchange="getbill()"><br>
+        <h4 class="choose">Choose Tip</h4> <span id="tipamount">₹</span>
+        <input class="rangee" id="choosetip" onclick="handletip()" type="range" min="0" max="100" value="0"><br><span class="spa" id="spaa">0.00</span><br>
+        <h4 class="split">Split</h4><span id="splitperson">1 person</span>
+        <input class="rangee" type="range" min="1" max="10" value="1" id="split" onchange="splitting()"> <br>
+       <div>
+        <div class="sub">
+            <h4 class="totalperperson" >Total per person</h4>
+            <span style="margin-left: 80px; margin-top: -20px;" id="total">₹0.00</span><br>
+            <div class="innercontainer">
+                <h4 style="margin-left: 50px;"> Bill</h4>
+                <h4>tip</h4>  
+            </div>
+            <span id="finalbill">₹0.00</span> <span  id="finaltip">₹0.00</span>
+            
+        </div>
+       </div>
+    </div>
+    
+</body>
+<script>
+    let choosetip=document.getElementById("choosetip");
+    let bill=document.getElementById("bill")
+    let split=document.getElementById("split")
+    let inputbill=document.getElementById("bill")
+    let tipamount=document.getElementById("tipamount")
+    let spaa=document.getElementById("spaa")
+    let splitperson=document.getElementById("splitperson")
+    let totalperperson=document.getElementById("total")
+    let finalbill=document.getElementById("finalbill");
+    let finaltip=document.getElementById("finaltip")
+
+    let getbill=()=>{
+       let res= inputbill.value
+    //    console.log(res);
+    //    totalperperson.innerText=`${res}.00`;
+       finalbill.innerText=`${res}.00`
+       totalbox()
+    }
+
+    let handletip=()=>{
+        let some=choosetip.value
+        tipamount.innerText=`₹${some}`;
+        spaa.innerText=`₹${some}`;
+        finaltip.innerText=`${some}.00`
+        // output=Number(inputbill.value)+Number(choosetip.value);
+        // totalperperson.innerText=output;
+        totalbox()
+
+    }
+    let splitting=()=>{
+        let splitres=split.value
+        splitperson.innerText=`${splitres} person`
+        // totalperperson.innerText=output/Number(splitres)
+        totalbox()
+
+    }
+     let totalbox=()=>{
+        
+        console.log(inputbill.value);
+        console.log(choosetip.value);
+       let out=Number(inputbill.value)+Number(choosetip.value)
+       console.log(out);
+       let result=out/Number(split.value)
+       console.log(result);
+       totalperperson.innerText=`${result}.00`;
+     }
+       
+</script>
+</html>
+ 
